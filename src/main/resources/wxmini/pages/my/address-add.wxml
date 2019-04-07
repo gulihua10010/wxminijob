@@ -1,0 +1,21 @@
+<view class="container">
+   <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+  <form bindsubmit="formSubmit">
+    <view class="user_bottom">
+        <view class="user_bottom_list2">
+            <view class="user_bottom_list_icon" style="color:#999">位置信息</view>
+            <input autoFocus bindinput="inputValue" class="inputs" data-type="name"  name="name" placeholder="位置信息" style="color:#333" value="{{place}}"></input>
+        </view>
+    </view>
+    <view class="user_bottom">
+        <view class="user_bottom_list2">
+            <view class="user_bottom_list_icon2" style="color:#999">详细地址(精确到宿舍号)</view>
+            <textarea autoFocus bindinput="inputValue" class="textareas" data-type="address" name="address"  placeholder="请输入您的详细地址" value="{{info}}"></textarea>  
+        </view>
+    </view>
+    <button bindtap="setPlace" class="weui-btn  ">
+      在地图中选择位置 >  
+      </button>
+    <button formType="submit" class="weui-btn   ">确定</button>
+    </form>
+</view>

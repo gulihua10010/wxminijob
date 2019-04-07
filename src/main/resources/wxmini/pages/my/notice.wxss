@@ -1,0 +1,53 @@
+ view  {
+    color: Grey;
+}
+.xiaoxi_list {
+    overflow: hidden;
+    width: 85%;
+    margin: 25rpx auto 0;
+    padding: 5%;
+    background: #fff;
+    border-radius: 20rpx; 
+    border: 1rpx #eee solid;
+}
+
+.xiaoxi_top {
+    line-height: 40rpx;
+    margin-bottom: 40rpx;
+    height: 40rpx;
+    overflow: hidden;
+}
+
+.xiaoxi_tit {
+    width: 100%;
+    color: #000;
+}
+.xiaoxi_hover{
+    background-color: #ECECEC;
+
+}
+.xiaoxi_time {
+    color: #999;
+    float: left;
+    width: 50%;
+}
+
+.xiaoxi_bot {
+    overflow: hidden;
+}
+
+.xiaoxi_tongzhi {
+    color: #999;
+    float: right;
+    width: 30%;
+}
+
+.xiaoxi_tongzhi text {
+    color: #fff;
+    border-radius: 40rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    width: 180rpx;
+    display: inline-block;
+    text-align: center;
+}

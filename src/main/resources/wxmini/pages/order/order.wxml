@@ -1,0 +1,77 @@
+<wxs src="../../utils/util.wxs" module="util" />
+
+<view class="page">
+   <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+   <view class="swiper-tab">
+        <view bindtap="swichNav" class="swiper-tab-list {{tab==0?'on':''}}" data-current="0">我的发布</view>
+        <view bindtap="swichNav" class="swiper-tab-list {{tab==1?'on':''}}" data-current="1">我的接单</view>
+    </view> 
+    <view class="page__bd">
+        <view class="weui-panel__bd">
+            <view class="null" wx:if="{{!hasuerinfo}}">请登录</view>
+            <view class="null" wx:if="{{isjin}}">您已经被管理员禁用</view>
+            <view class="weui-media-box weui-media-box_appmsg" hoverClass="weui-cell_active" wx:if="{{tab==0&&!isjin}}"  wx:for="{{list}}" wx:for-index="idx" wx:key="k">
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <navigator url="/pages/order/order_dedail?id={{item.id}}" hoverClass="weui-cell_active">
+                        <view class="weui-media-box__title list_title">
+                            <text class="list_start">{{item.title}}</text>
+                            <text class="list_tm">￥ {{item.payment}}</text>
+                        </view>
+                        <view class="weui-media-box__desc list_desc">
+                        <view class=" " style="display:inline">  发布时间：{{util.getDatebefore(item.createTime)}} </view>  
+                               <view class=" "  style="display:inline;margin-left:20rpx">截止时间：{{util.getDateDiff(item.finshTime)}}
+                             </view> </view>
+                        <view class="weui-media-box__desc list_desc" wx:if="{{item.status==1}}">状态：没人领取 </view>
+                        <view class="weui-media-box__desc list_desc" wx:elif="{{item.status==2||item.status==3}}">状态：正在进行中 </view>
+                        <view class="weui-media-box__desc list_desc" wx:else>状态：任务完成</view> 
+                    </navigator>
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta list_type_1">{{item.type}}</view>
+                       
+                        <view class="editdiv"> 
+                            <button bindtap="del" class="editbtn" id="{{item.id}}" data-item='{{idx}}' type="warn" wx:if="{{item.status!=2&&item.status!=3}}">删除订单</button>
+                            <button bindtap="edit" class="editbtn" id="{{item.id}}" type="primary" wx:if="{{item.status==0}}">修改订单</button>
+                            <button bindtap="done" class="editbtn" id="{{item.id}}" type="primary" wx:if="{{item.status!=4}}">订单确认完成</button>
+                            <button class="editbtn" id="{{item.id}}" type="after" wx:if="{{item.status==4}}">订单已结束</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+                <view class="weui-media-box weui-media-box_appmsg"  wx:if="{{tab==1&&!isjin}}"  hoverClass="weui-cell_active" wx:for="{{list}}" wx:for-index="idx" wx:key="k1">
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <navigator url="/pages/order/getorder1?id={{item.orderid}}" hoverClass="weui-cell_active">
+                        <view class="weui-media-box__title list_title">
+                            <text class="list_start">{{item.task.title}}</text>
+                            <text class="list_tm">￥ {{item.task.payment}}</text>
+                        </view>
+                        <view class="weui-media-box__desc list_desc">
+                        <view class=" " style="display:inline">  发布时间：{{util.getDatebefore(item.createTime)}} </view>  
+                               <view class=" "  style="display:inline;margin-left:20rpx">截止时间：{{util.getDateDiff(item.task.finshTime)}}
+                             </view> </view> 
+                        <view class="weui-media-box__desc list_desc"  >状态：正在进行中 </view> 
+                        <view class="weui-media-box__desc list_desc"  >订单号:{{item.orderid}} </view> 
+                        <view class="weui-media-box__desc list_desc"  >下单时间:{{util.getDatebefore(item.createTime)}} </view> 
+                    </navigator>
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta list_type_1">{{item.task.type}}</view>
+                       
+                        <view class="editdiv"> 
+                            <button bindtap="delorder" class="editbtn" id="{{item.id}}"  data-uid='{{item.uid}}'  data-tid='{{item.task.id}}'  data-item='{{idx}}' type="warn" >删除订单</button> 
+                            <button bindtap="done" class="editbtn" id="{{item.id}}" type="primary" wx:if="{{item.status!=4}}">订单确认完成</button>
+                            <button class="editbtn" id="{{item.id}}" type="after" wx:if="{{item.status==4}}">订单已结束</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page__bd" wx:if="{{!isnull}}">
+        <view bindtap="onReachBottom" class="weui-loadmore" wx:if="{{!nomore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{nomore}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了~</view>
+        </view>
+    </view>
+</view>

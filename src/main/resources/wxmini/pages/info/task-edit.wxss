@@ -1,0 +1,78 @@
+.page__bd {
+    background: #efefef;
+}
+
+.weui-cells__title {
+    padding-top: .3rem;
+    margin-top: 0;
+}
+
+.radio-group {
+    padding: 10px 0px!important;
+}
+
+.weui-label {
+    color: black;
+}
+
+.radio text {
+    margin: 0rpx 8rpx;
+}
+
+.radio {
+    margin-right: 12rpx;
+}
+
+.weui-btn {
+    background: #0088fe!important;
+    color: #000!important;
+}
+.myaddress{
+
+  width:25%;
+  border-left:1px #ccc solid; 
+  color:#666;
+  padding: auto;
+  text-align: center
+}
+.weui-input {
+    overflow: hidden;
+}
+.card1,.card {
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.cards {
+    float: left;
+    /* width: 160rpx; */
+    height: 160rpx;
+    margin-right: 10px;
+    position: relative; 
+}
+
+ 
+.cards text {
+    width: 40rpx;
+    height: 40rpx;
+    background: #f00;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    position: absolute;
+    right: -10rpx;
+    top: -10rpx;
+    line-height: 40rpx;
+}
+.card_sc {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    border-radius: 0; 
+    width: 160rpx;
+    height: 160rpx; 
+}
+.user_bottom_list1{
+  height: 170rpx;
+}

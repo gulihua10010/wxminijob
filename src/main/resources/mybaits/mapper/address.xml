@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybaits.test.demo.dao.AddressDao">
+    <resultMap type="com.mybaits.test.demo.bean.Address"  id="addressBean" >
+        <id column="id"  property="id"/>
+        <result column="name" property="name"/>
+        <result column="address" property="address"/>
+        <association property="user" javaType="com.mybaits.test.demo.bean.User">
+            <id column="id" property="id"/>
+            <result column="real_name" property="realName"/>
+            <result column="gender" property="gender"/>
+            <result column="nick_name" property="nickName"/>
+            <result column="avatar_url" property="avatarUrl"/>
+            <result column="school" property="school"/>
+            <result column="phone" property="phone"/>
+            <result column="open_id" property="openId"/>
+        </association>
+    </resultMap>
+    <select id="getAddressById"  parameterType="int" resultMap="addressBean">
+          select  * from  `address`  a  left join  `user` u on u.id=a.uid
+          where a.id=#{id}
+    </select>
+
+    <select id="getAddressByUid"  parameterType="int" resultMap="addressBean">
+          select * from  `address`  a  left join  `user` u on u.id=a.uid
+
+          where a.uid =#{uid}
+    </select>
+
+</mapper>

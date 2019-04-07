@@ -1,0 +1,152 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+    <form bindsubmit="formSubmit">
+      <view class="weui-cells__title">确认联系人信息(若有误请到设置修改)</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="name" placeholder="{{usernametip}}" type="text" value="{{username}}" disabled='true'></input>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">性别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <radio-group bindchange="radioChange">
+              <picker bindchange="setSex" mode="selector" name="gender" range="{{sex}}" value="{{gender}}">
+                <view class="weui-input">{{sex[gender]}}</view>
+              </picker>
+            </radio-group>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">手机号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled="true" maxlength="11" name="phone" placeholder="{{usernametip}}" type="number" value="{{phone}}" disabled='true'></input>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title">填写任务信息</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+              <view class="weui-label">任务类型</view>
+            </view>
+        <view class="weui-cell__bd">
+                <input class="weui-input" maxlength="4" name="type" placeholder="请输入类型(4个字以内)" type="text"  value='{{task.type}}'></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+              <view class="weui-label">任务标题</view>
+            </view>
+        <view class="weui-cell__bd">
+                <input class="weui-input" maxlength="15" name="title" placeholder="请输入标题(15个字以内)" type="text"  value='{{task.title}}'></input>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input StartAndStop ">
+          <view class="weui-cell__hd">
+            <view class="weui-label">学校地点</view>
+          </view>
+          <view class="weui-cell__bd ">
+            <view bindtap="sexDeparture" class="weui-input " style='width:74%;float:left'>{{departure}}</view>
+            <navigator   bindtap="myaddress" class="weui-input  myaddress" url='/pages/info/myaddress'  >我的地址</navigator> 
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input ">
+          <view class="weui-cell__hd ">
+            <view class="weui-label ">截止日期</view>
+          </view>
+          <view class="weui-cell__bd ">
+            <picker bindchange="bindDateChange" end="{{end}}" mode="date" name="date" start="{{start}}" value="{{date}} ">
+              <view class="weui-input ">{{date}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access "></view>
+        </view>
+        <view class="weui-cell weui-cell_input ">
+          <view class="weui-cell__hd ">
+            <view class="weui-label ">截止时间</view>
+          </view>
+          <view class="weui-cell__bd ">
+            <picker bindchange="bindTimeChange" end="23:59" mode="time" name="time" start="00:00" value="{{time}}">
+              <view class="weui-input ">{{time}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access "></view>
+        </view>
+         <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">人数 </view>
+          </view>
+          <view class="weui-cell__bd">
+            <radio-group bindchange="radioChange">
+              <picker bindchange="setNum" mode="selector" name="num" range="{{nums}}" value="{{num}}">
+                <view class="weui-input">{{nums[num-1]}}</view>
+              </picker>
+            </radio-group>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view class="weui-cell weui-cell_input ">
+          <view class="weui-cell__hd ">
+            <view class="weui-label ">赏金(元/人)</view>
+          </view>
+          <view class="weui-cell__bd ">
+            <input class="weui-input" name="price" placeholder="请填写价格,不超过500元 " value="{{price}}" type="digit"  value='{{task.payment}}'></input>
+          </view>
+        </view>
+      </view>
+         
+      <view class="weui-cells__title ">任务信息介绍</view>
+      <view class="weui-cells weui-cells_after-title ">
+        <view class="weui-cell ">
+          <view class="weui-cell__bd ">
+            <textarea class="weui-textarea " name="remark"   style="height: 3.3em " value='{{task.desc}}'></textarea>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title ">隐私信息</view>
+      <view class="weui-cells weui-cells_after-title ">
+        <view class="weui-cell ">
+          <view class="weui-cell__bd ">
+            <textarea class="weui-textarea " name="hidden_remark"   style="height: 3.3em " value='{{task.privateInfo}}'></textarea>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title ">图片信息(可选)</view>
+                    <view class="user_bottom_list1 "> 
+                    <view class="cards " >
+                      <image class="card1" src="/images/card3.jpg " wx:if="{{!pic1.length}}"></image>  
+                      <image class="card1" src="{{pic1}} " wx:if="{{pic1.length}}"  ></image>
+                      <text bindtap="emptyImg" class="close" data-type="pic1"  wx:if="{{pic1.length }}">x </text> 
+                    </view>
+                     <view class="cards "  wx:if="{{pic1.length}}">
+                      <image class="card1" src="/images/card3.jpg " wx:if="{{!pic2.length}}"></image>  
+                      <image class="card1" src="{{pic2}} " wx:if="{{pic2.length}}" ></image>
+                      <text bindtap="emptyImg" class="close" data-type="pic2"  wx:if="{{pic2.length }}">x </text> 
+                    </view>
+                     <view class="cards "  wx:if="{{pic2.length}}">
+                      <image class="card1" src="/images/card3.jpg " wx:if="{{!pic3.length}}"></image>  
+                      <image class="card1" src="{{pic3}} " wx:if="{{pic3.length}}"  ></image>
+                      <text bindtap="emptyImg" class="close" data-type="pic3"  wx:if="{{pic3.length }}">x </text> 
+                    </view>
+                    <button bindtap="chooseimage" class="card_sc " data-type="pic" wx:if="{{!pic3.length}}">
+                      <image class="card " mode="widthFix " src="/images/card1.jpg "></image>
+                    </button>
+                  </view>
+      <view class="weui-btn-area ">
+        <button class="weui-btn " formType="submit"  wx:if="{{hasUserInfo}}"  >确定</button>
+         <button class="weui-btn " formType="submit"   wx:else  disabled='true' >{{usernametip}}</button>
+      </view>
+    </form>
+  </view>
+</view>

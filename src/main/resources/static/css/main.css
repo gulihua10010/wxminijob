@@ -1,0 +1,167 @@
+ul,li{
+    list-style: none;
+}
+
+.loginborder {
+    margin: 200px auto;
+    width: 540px;
+    height: 300px
+}
+
+.login {
+    padding: 80px 50px  30px 50px;
+    width: 540px;
+    height: 300px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px rgba(1, 1, 1, .1)
+}
+
+h1 {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: #fff
+}
+
+div.loginborder div.login button {
+    margin-top: 20px;
+    width: 450px;
+    height: 40px;
+    background-color: #0fff87
+}
+
+.lg-input{
+    width: 300px;
+}
+img, input[type=password], input[type=text], label {
+    display: inline-block
+}
+
+.caption {
+    height: 40px
+}
+
+.caption, .inputs img {
+    width: 150px
+}
+
+div.loginborder div.login div.inputs > label {
+    width: 90px
+}
+
+.fly-panel {
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 20px;
+}
+.tpt—index table {
+    margin-bottom: 10px;
+}
+.tpt—index tr {
+    font-size: 13px;
+    line-height: 38px;
+    border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.layui-form-checkbox span {
+    padding: 0 10px;
+    height: 100%;
+    font-size: 14px;
+   
+}
+.layui-form-checkbox[lay-skin=primary] i {
+    position: relative;
+    top: 0;
+    width: 25px;
+    line-height: 25px;
+}
+.btable-paged {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 0px;
+    height:36px;
+    line-height:36px;
+}
+
+.formbtngroup{margin-right:30px;float:right}
+.admin-table-page{padding: 10px 15px;    overflow: hidden;}
+.pagination {
+ display: inline-block;
+ padding-left: 0;
+ 
+ border-radius: 4px;
+ float: right; 
+}
+.pagination li {
+  display: inline;
+}
+.pagination li a,
+.pagination li span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #393D49;
+  background: #fff;
+  margin: 0 0 0 8px;
+  border: 1px solid #eee;
+}
+
+.pagination li a:hover {
+	color: #fff;
+	background: #009688;
+}
+.pagination .active span{
+background: #009688;
+color: #fff;
+}
+.pagination .disabled{
+display: none;
+}
+.layui-table td, .layui-table th {
+    padding: 9px 15px;
+    min-height: 14px;
+    line-height: 14px;
+}
+.layui-box-searchber {overflow:hidden;}
+.layui-form-pane {float:right;}
+.layui-form-pane .layui-form-label {
+    width: 80px;
+    padding: 8px 7px;
+    height: 30px;
+    line-height: 15px;
+}
+.layui-form-pane .layui-input {
+    border-radius: 0 2px 2px 0;
+    height:30px;
+    line-height:30px;
+}
+.label-tint{
+	clear:both;
+	color:#F7B824;
+	margin-left:110px;
+	
+}
+.layui-view{
+
+    line-height: 35px;
+    font-size: 18px;
+}
+/* 适配多设备 */
+@media screen and (max-width: 750px) {
+	.btable-paged li{display:none;}
+	.btable-paged li:first-child{display:inline-block;}
+		.btable-paged li:last-child{display:inline-block;}
+		.pagination {
+ display: inline-block;
+ padding-left: 0;
+ 
+ border-radius: 4px;
+ float: left; 
+}
+.formbtngroup{margin-right:30px;float:left}
+	}

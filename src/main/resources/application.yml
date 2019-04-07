@@ -1,0 +1,63 @@
+
+spring:
+  datasource:
+#   数据源基本配置
+    username: root
+#    password: lihua0105...
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.99.103:3308/job
+#    url: jdbc:mysql://115.159.160.48:3306/job
+    type: com.alibaba.druid.pool.DruidDataSource
+#   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+#   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    database: 0
+#    host: 115.159.160.48
+    host: 192.168.99.103
+    port: 6380
+    password:
+    jedis:
+      pool:
+        max-active: 1000
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    timeout: 1000ms
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+
+
+mybatis:
+#  config-location: classpath:mybaits/mybatis-config.xml
+  mapper-locations: classpath:mybaits/mapper/*.xml
+server:
+  port: 8090
+  servlet:
+    session:
+      timeout: 3600s
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+#    initialization-mode: always

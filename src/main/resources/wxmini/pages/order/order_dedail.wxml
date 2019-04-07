@@ -1,0 +1,37 @@
+<!--pages/task_detail/task_detail.wxml-->
+<wxs src="../../utils/util.wxs" module="util" />
+
+<view class="container">
+    <view class="dingdan_tops">
+        <view class="dingdan_tops_center">
+            <view class="dingdan_tops_center_cont">
+                <view class="dingdan_tops_center_cont1 font36">{{data.title}}</view>
+                <view class="dingdan_tops_center_cont2">
+                    <text >{{data.type}}</text>
+                </view>
+                <view class="dingdan_tops_center_cont3">截止时间：{{util.formatTime_HMS(data.endTime)}}</view>
+            </view>
+            <view class="label">
+                <text class="labels">酬金</text>{{data.price}}</view>
+        </view>
+    </view>
+    <view class="dingdan_infor1">
+        <view class="dingdan_infor1_tit font36">订单详情：{{data.desc}}</view>
+        <view class="dingdan_infor1_cont">
+            <view class="index_renwu_list_center_center">
+                <image class="list_pic" mode="widthFix" src="{{data.pic1}}"  wx:if="{{data.pic1!=''}}"></image>
+                <image class="list_pic" mode="widthFix" src="{{data.pic2}}" wx:if="{{data.pic2!=''}}" ></image>
+                <image class="list_pic" mode="widthFix" src="{{data.pic3}}"  wx:if="{{data.pic3!=''}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="dingdan_infor2">
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">发单人：{{data.user.nickName}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">联系方式：{{data.user.phone}}</view>
+        <view class="dingdan_infor1_tit2">订单地址：{{data.place}}</view>
+    </view> 
+    <button bindtap="canFinish" class="weui-btn "    wx:if="{{data.user.status==4}}">任务完成</button>
+    <button bindtap="checkFinish" class="weui-btn  "   wx:if="{{data.user.status!=4}}">确认完成</button>
+      <navigator class="weui-btn " style="text-align:center" wx:if="{{ismy&&hasUserInfo}}" url='/pages/info/task-edit?id={{data.id}}'>编辑</navigator>
+</view>
+

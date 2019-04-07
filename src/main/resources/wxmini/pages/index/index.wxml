@@ -1,0 +1,68 @@
+<wxs src="../../utils/util.wxs" module="util" />
+<!--index.wxml-->
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+<view class="page">
+    <view class="page__hd">
+        <view class="head">
+            <image class="to2" src="/images/position1.png"></image>
+            <view bindtap="chooseStart" class="locationInput">{{start}}</view>
+            <image class="to" src="/images/{{gender}}.png"></image>
+            <radio-group bindchange="radioChange">
+                <picker bindchange="setSex" mode="selector" name="gender" range="{{sex}}" value="{{gender}}">
+                    <view class="weui-input">{{sex[gender]}}</view>
+                </picker>
+            </radio-group>
+        </view>
+    </view>
+    <view class="index_renwu_list" wx:for="{{lists}}" wx:key="id">
+            <navigator url="/pages/task_detail/task_detail?id={{item.id}}">
+                <view class="index_renwu_tit">
+                    <image class="head" mode="widthFix" src="{{item.user.avatarUrl}}"></image>
+                </view>
+                <view class="index_renwu_list_top">
+                    <view class="index_renwu_list_top_l">
+                        <view class="index_renwu_list_top_l_name">{{item.user.nickName}}</view>
+                        <text class="index_renwu_list_top_l_title ">{{item.title}}</text> 
+                        <text class="index_renwu_list_top_l_con ">{{util.subtext(item.desc,77)}}</text> 
+                    </view>
+                    <view class="index_renwu_list_top_r ">
+                        <tetx class="choujin_name">酬金</tetx>
+                        <tetx class="choujin_pricee">{{item.payment}}</tetx>
+                    </view>
+                </view>
+                <view class="line"></view>
+                <view class="index_renwu_list_center">
+                    <view class="index_renwu_list_center_top"> 
+                    <view class="index_renwu_list_center_left"> {{item.type}}</view>
+                    <view class="index_renwu_list_center_right" wx:if="{{item.status!=4}}">截止时间：{{util.getDateDiff(item.finshTime)}}</view>
+                   
+                    <view class="index_renwu_list_center_right" wx:else style='color:green'>已经完成</view>
+                    </view> 
+                    
+                     
+                    <view class="index_renwu_list_center_bot">
+                        <text class="day">发布于:{{util.getDatebefore(item.createTime)}}</text>
+                        <text class="pos">学校:{{item.school}}</text>
+                    </view>
+                </view>
+                <image class="img2" src="/images/img.png"></image>
+            </navigator>
+        </view>
+        <navigator url="/pages/info/add">
+    <view  class="add">
+        <image src="/images/want.png"></image>
+    </view>
+</navigator>
+
+   </view>

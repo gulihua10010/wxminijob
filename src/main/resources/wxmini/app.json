@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/msg/msg",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/task_detail/task_detail",
+    "pages/my/info",
+    "pages/schools/schools",
+    "pages/my/fav",
+    "pages/my/address",
+    "pages/my/address-edit",
+    "pages/my/notice",
+    "pages/my/notice_detail",
+    "pages/info/add",
+    "pages/order/order_dedail",
+    "pages/my/address-add",
+    "pages/info/myaddress",
+    "pages/info/task-edit",
+    "pages/order/getorder",
+    "pages/chatroom/chatroom", 
+    "pages/order/getorder1"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f9f9f9",
+    "navigationBarTitleText": "校园微服务",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#aaa",
+    "selectedColor": "#0088fe",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "校园微服务",
+        "iconPath": "images/footer_icon1.jpg",
+        "selectedIconPath": "images/footer_icon1_on.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "消息",
+        "iconPath": "images/footer_icon2.jpg",
+        "selectedIconPath": "images/footer_icon2_on.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/footer_icon3.jpg",
+        "selectedIconPath": "images/footer_icon3_on.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/footer_icon4.jpg",
+        "selectedIconPath": "images/footer_icon4_on.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

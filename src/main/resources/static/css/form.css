@@ -1,0 +1,13 @@
+.layui-form-checkbox {
+    position: relative;
+    height: 26px;
+    line-height: 26px;
+    margin: 0;
+    padding-right: 26px;
+}
+.layui-form-checkbox i {
+    position: absolute;
+    right: 4px;
+    width: 20px;
+    font-size: 15px;
+}

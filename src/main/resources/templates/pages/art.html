@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <div class="layui-tab layui-tab-brief">
+        <div class="layui-tab-item layui-show">
+            <div class="admin-main">
+                <div class="layui-field-box layui-form">
+
+                    <table class="layui-table admin-table">
+                        <thead>
+                        <tr>
+                            <th width="10%" align="center">id</th>
+                            <th width="10%" align="center">类型</th>
+                            <th width="10%" align="center">标题</th>
+                            <th width="20%" align="center">发布时间</th>
+                            <th width="20%" align="center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="art:${arts}">
+                            <td align="center" th:text="${art.id}">{$vo.id}</td>
+                            <td style="padding-left: 20px;"><a target="_blank" th:text="${art.sid==0?'系统':('用户:'+(art.user!=null ?art.user.nickName:''))}"  > </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${art.title}" >  </a></td>
+                            <td align="center" th:text="${#dates.format(art.createTime,'yyyy-MM-dd HH:mm')}"> </td>
+                            <td align="center"><a class="layui-btn layui-btn-normal layui-btn-mini" th:href="@{'/artedit/'+${art.id}}"
+                                                  href="">查看详情</a>
+                                <a class="elementdel layui-btn layui-btn-danger layui-btn-mini" href="javascript:;"
+                                   data-id="" th:attr="data-id=${art.id}"
+                                   >删除</a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/js/common.js"></script>
+
+
+
+</div>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var form = layui.form
+            , jq = layui.jquery;
+
+        jq('.elementdel').click(function () {
+            var id=jq(this).data('id');
+            var t=jq(this);
+            layer.confirm('确定要删除么？', {
+                btn: ['确定','取消']
+            }, function(){
+
+                ajaxform({},"/delart/"+id,jq,function (res) {
+                    location.reload();
+                } );
+            }, function(){
+            });
+
+
+        })
+
+    })
+
+</script>
+</body>
+</html>

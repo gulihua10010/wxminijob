@@ -1,0 +1,160 @@
+<!--pages/my/info.wxml-->
+<view bindtap="closeErr" class="page">
+  <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+  <view class="page__hd">
+    <view class="head">
+      <view>
+        <image bindtap="dateAvatar" src="{{userInfo.avatarUrl}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="form">
+    <view class="page__bd">
+      <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input" wx:if="{{!existSchool&&!existPhone||isjin}}">
+            <view class="weui-cell__hd">
+              <view class="weui-label">
+                <image src="/images/notify.png" style="margin-right: 5px;vertical-align: middle;width:30px; height: 30px;"></image>
+              </view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="weui-input">{{usertips}}</view>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">昵称</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="nickName" placeholder="请输入昵称" value="{{userInfo.nickName}}"></input>
+            </view>
+          </view>
+             <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">真实姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="realName" placeholder="请输入你的真实姓名" value="{{userInfo.realName}}"></input>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input bindinput="setPhone" class="weui-input" disabled="{{existPhone}}" maxlength="11" name="phone" bindinput='getPhoneValue' placeholder="请输入手机号" type="number" value="{{userInfo.phone}}"></input>
+            </view>
+            <view class="weui-cell__ft" wx:if="{{existPhone}}">
+              <view bindtap="updatePhone" class="weui-vcode-btn">修改</view>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input weui-cell_vcode" wx:if="{{!existPhone}}">
+            <view class="weui-cell__hd">
+              <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" maxlength="6" name="verification" bindinput='getCodeValue'  placeholder="请输入验证码" type="number" value="{{verification}}"></input>
+            </view>
+            <view bindtap="getVerificationCode" class="weui-cell__ft" disabled="{{disabled}}">
+              <view class="weui-vcode-btn"  >{{getCodeText}}</view>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">性别</view>
+            </view>
+            <view class="weui-cell__bd">
+              <picker bindchange="selectsex" mode="selector" name="gender" range="{{sex}}" value="{{userInfo.gender}}" >
+                <view class="weui-input">{{sex[userInfo.gender]}}</view>
+              </picker>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">所在学校</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view bindtap="chooseStart" class="weui-input">{{school}}</view>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">所在学院</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="college" placeholder="请输入您的学院/系" value="{{userInfo.college}}"></input>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">所在班级</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="className" placeholder="请输入您的班级" value="{{userInfo.className}}"></input>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">学号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" name="stuno" placeholder="请输入您的学号" value="{{userInfo.stuNo}}"></input>
+            </view>
+          </view>
+          <view class="user_bottom1">
+                  <view class="user_bottom_list1">
+                    <view class="user_bottom_list_icon1">身份证正面照</view>
+                    <view class="cards">
+                      <image class="card1" src="/images/card3.jpg" wx:if="{{!idcard1.length}}"></image>
+                      <image class="card1" src="{{idcard1}}" wx:if="{{idcard1.length}}" ></image>
+                      <text bindtap="emptyImg" class="close" data-type="idcard1" wx:if="{{idcard1.length}}">x</text>
+                    </view>
+                    <button bindtap="chooseimage" class="card_sc" data-type="idcard1" wx:if="{{!idcard1.length}}">
+                      <image class="card" mode="widthFix" src="/images/card1.jpg"></image>
+                    </button>
+                  </view>
+                  <view class="user_bottom_list1">
+                    <view class="user_bottom_list_icon1">身份证反面照</view>
+                    <view class="cards">
+                      <image class="card1" src="/images/card3.jpg" wx:if="{{!idcard2.length}}"></image>
+                      <image class="card1" src="{{idcard2}}" wx:if="{{idcard2.length}}" ></image>
+                      <text bindtap="emptyImg" class="close" data-type="idcard2" wx:if="{{idcard2.length}}">x</text>
+                    </view>
+                    <button bindtap="chooseimage" class="card_sc" data-type="idcard2" wx:if="{{!idcard2.length}}">
+                      <image class="card" mode="widthFix" src="/images/card1.jpg"></image>
+                    </button>
+                  </view>
+                <view class="user_bottom_list1">
+                  <view class="user_bottom_list_icon1">学生证
+                  </view>
+                  <view class="cards">
+                    <image class="card1" src="/images/card3.jpg" wx:if="{{!stucard.length}}"></image>
+                    <image class="card1" src="{{stucard}}" wx:if="{{stucard.length}}"  ></image>
+                    <text bindtap="emptyImg" class="close" data-type="stucard" wx:if="{{stucard.length}}">x</text>
+                  </view>
+                  <button bindtap="chooseimage" class="card_sc" data-type="stucard" wx:if="{{!stucard.length}}">
+                    <image class="card" mode="widthFix" src="/images/card1.jpg"></image>
+                  </button>
+                </view>
+            </view>
+                <view class="renzheng_bot">
+                  <view class="renzheng_tit">
+                    <image mode="widthFix" src="/images/icon1.jpg"></image>
+                    <text>注意</text>
+                  </view>
+                      <view class="renzheng_cont">
+                        <view class="renzheng_cont_list">1、保持所提供的证件的真实性，我们会保护您的隐私。</view>
+                        <view class="renzheng_cont_list">2、请保证能看清证件上的文字。</view> 
+                        <view class="renzheng_cont_list">3、以上是示例图仅作示范。</view>
+                      </view>
+                </view>
+        </view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" disabled='true'  wx:if="{{userInfo.status==-1}}" type="primary">您已经被禁用</button>
+          <button class="weui-btn" formType="submit" wx:else   type="primary">{{btninfo}}</button>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybaits.test.demo.dao.TaskDao">
+    <resultMap type="com.mybaits.test.demo.bean.Task"  id="taskBean" >
+    <id column="id"  property="id"/>
+        <result column="title" property="title"/>
+        <result column="desc" property="desc"/>
+        <result column="private_info" property="privateInfo"/>
+        <result column="payment_type" property="paymentType"/>
+        <result column="person_num" property="personNum"/>
+        <result column="status" property="status"/>
+        <result column="end_time" property="endTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="finsh_time" property="finshTime"/>
+        <result column="publish_userid" property="publishUserid"/>
+        <result column="payment" property="payment"/>
+        <result column="type" property="type"/>
+        <result column="school" property="school"/>
+        <result column="pic1" property="pic1"/>
+        <result column="pic2" property="pic2"/>
+        <result column="pic3" property="pic3"/>
+        <result column="exe_num" property="exeNum"/>
+        <result column="place" property="place"/>
+        <association property="user" javaType="com.mybaits.test.demo.bean.User">
+            <id column="id" property="id"/>
+            <result column="real_name" property="realName"/>
+            <result column="gender" property="gender"/>
+            <result column="nick_name" property="nickName"/>
+            <result column="avatar_url" property="avatarUrl"/>
+            <result column="school" property="school"/>
+            <result column="phone" property="phone"/>
+            <result column="open_id" property="openId"/>
+        </association>
+    </resultMap>
+    <resultMap type="com.mybaits.test.demo.bean.Task"  id="taskFavBean" >
+        <id column="id"  property="id"/>
+        <result column="title" property="title"/>
+        <result column="desc" property="desc"/>
+        <result column="private_info" property="privateInfo"/>
+        <result column="payment_type" property="paymentType"/>
+        <result column="person_num" property="personNum"/>
+        <result column="status" property="status"/>
+        <result column="end_time" property="endTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="finsh_time" property="finshTime"/>
+        <result column="publish_userid" property="publishUserid"/>
+        <result column="payment" property="payment"/>
+        <result column="type" property="type"/>
+        <result column="school" property="school"/>
+        <result column="pic1" property="pic1"/>
+        <result column="pic2" property="pic2"/>
+        <result column="pic3" property="pic3"/>
+        <result column="exe_num" property="exeNum"/>
+        <result column="place" property="place"/>
+        <association property="user" javaType="com.mybaits.test.demo.bean.User">
+            <id column="id" property="id"/>
+            <result column="real_name" property="realName"/>
+            <result column="gender" property="gender"/>
+            <result column="nick_name" property="nickName"/>
+            <result column="avatar_url" property="avatarUrl"/>
+            <result column="school" property="school"/>
+            <result column="phone" property="phone"/>
+            <result column="open_id" property="openId"/>
+        </association>
+    </resultMap>
+    <select id="getTaskListBySchoolandGender"  parameterType="map" resultMap="taskBean">
+          select * from  `task`  t  left join  `user` u on u.id=t. publish_userid
+          where t.school like concat('%',#{school},'%') and u.gender =#{gender} order by t.create_time desc
+
+    </select>
+
+    <select id="getTaskListByGedner"  parameterType="int" resultMap="taskBean">
+          select * from  `task`  t  left join  `user` u on u.id=t. publish_userid
+
+          where u.gender =#{gender}  order by t.create_time desc
+    </select>
+    <select id="getTaskById"  parameterType="int" resultMap="taskFavBean">
+          select * from   `task`  t  left join  `user` u on u.id=t. publish_userid  where t.id=#{id}
+
+    </select>
+
+    <select id="getTaskListByuid"  parameterType="int" resultMap="taskBean">
+          select * from   `task`  t  left join  `user` u on u.id=t. publish_userid  where t.publish_userid=#{uid}  order by t.create_time desc
+
+    </select>
+</mapper>

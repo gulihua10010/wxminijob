@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybaits.test.demo.dao.FavDao">
+    <resultMap type="com.mybaits.test.demo.bean.Fav"  id="addressBean" >
+        <id column="id"  property="id"/>
+        <association property="task" javaType="com.mybaits.test.demo.bean.Task">
+            <id column="id" property="id"/>
+            <result column="title" property="title"/>
+            <result column="name" property="name"/>
+            <result column="desc" property="desc"/>
+            <result column="status" property="status"/>
+            <result column="finsh_time" property="finshTime"/>
+            <result column="create_time" property="createTime"/>
+            <result column="exe_num" property="exeNum"/>
+        </association>
+    </resultMap>
+    <select id="getFavByUid111111111"  parameterType="int" resultMap="addressBean">
+          select  * from  `fav`  f  left join  `task` t on t.id=f.tid
+          where f.uid=#{uid}
+    </select>
+
+
+</mapper>

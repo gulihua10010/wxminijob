@@ -1,0 +1,181 @@
+view  {
+    color: Grey;
+}
+.bottom-bar {
+    position: fixed;
+    bottom: 20rpx;
+    left: 2.5%;
+    width: 95%;
+    z-index: 1000;
+}
+ form{
+  margin: 0;
+  padding: 0;
+  width: 100%; 
+}
+.bottom-bar navigator {
+    background: #0088fe;
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #fff;
+    border-radius: 100rpx;
+}
+
+.address_list {
+    background: #fff;
+    width: 88%;
+    margin: 20rpx auto;
+    border-radius: 10rpx;
+    box-shadow: 0 2px 2px #ddd;
+    padding: 3%;
+}
+
+.address_top {
+    height: 50rpx;
+    line-height: 50rpx;
+    overflow: hidden;
+}
+
+.address_center {
+    color: #999;
+    margin: 10rpx 0 20rpx;
+    font-size: 28rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+}
+
+.address_bot {
+    float: right;
+}
+
+.address_delete {
+    float: right;
+    border: 1px solid #999;
+    border-radius: 10rpx;
+    padding: 8rpx 30rpx;
+    margin-right: 10rpx;
+}
+
+.address_edit {
+    float: right;
+    border: 1px solid #999;
+    border-radius: 10rpx;
+    padding: 8rpx 30rpx;
+}
+
+.tj_btn {
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 90%;
+    margin: 40rpx auto;
+    border-radius: 100rpx;
+    color: #fff;
+    background: #0088fe;
+}
+
+.tj_btn:after {
+    border: 0;
+}
+
+.user_bottom {
+    overflow: hidden;
+    background: #fff;
+    width: 90%;
+    border-radius: 25rpx;
+    margin: 30rpx 0 0;
+    padding: 0 2%;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.user_bottom_list {
+    background: #fff;
+    overflow: hidden;
+    height: 120rpx;
+    line-height: 120rpx;
+}
+
+.user_bottom_list_icon {
+    float: left;
+    width: 20%;
+    padding-left: 4%;
+    color: #333;
+    height: 120rpx;
+    font-size: 30rpx;
+    line-height: 120rpx;
+}
+
+.user_bottom_list_icon image {
+    width: 80rpx;
+    height: 80rpx;
+    margin-top: 20rpx;
+}
+
+.inputs,.user_bottom_list_infor {
+    float: left;
+    width: 65%;
+    margin-left: 2%;
+    padding-left: 4%;
+    color: #999;
+    text-align: right;
+    height: 120rpx;
+}
+
+.picker {
+    color: #999;
+    text-align: left;
+}
+
+.user_bottom_list_arrow {
+    float: right;
+    width: 16rpx;
+    padding-right: 2%;
+}
+
+.user_bottom_list_arrow image {
+    width: 16rpx;
+    height: 26rpx;
+}
+
+.user_bottom_list2 {
+    background: #fff;
+    overflow: hidden;
+    font-size: 30rpx;
+    width: 100%;
+}
+
+.user_bottom_list_icon2 {
+    height: 50rpx;
+    line-height: 50rpx;
+    margin: 10rpx 0;
+    padding-left: 5%;
+}
+
+.textareas {
+    padding-left: 4%;
+    width: 95%;
+    line-height: 30rpx;
+    height: 120rpx;
+    overflow: hidden;
+}
+
+.user_bottom_list_infor {
+    float: left;
+    width: 400rpx;
+    margin-left: 2%;
+    padding-left: 2%;
+    color: #999;
+    text-align: left;
+    height: 120rpx;
+}
+
+.inputs {
+    float: left;
+    width: 430rpx;
+    margin-left: 2%;
+    padding-left: 2%;
+    color: #999;
+    text-align: left;
+    height: 120rpx;
+}

@@ -1,0 +1,20 @@
+<view class="container">
+   <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorMsg}}</view>
+    <view class="bottom-bar">
+        <navigator url="/pages/my/address-add" >添加新地址</navigator>
+    </view>
+    <view class="addresss">
+        <view bindtap="setOrderAddress" class="address_list" data-id="{{item.id}}" wx:for="{{lists}}"  wx:for-index="idx">
+            <view class="address_top">
+              {{item.name}}
+         </view>
+            <view class="address_center">
+              {{item.address}}
+         </view>
+            <view class="address_bot"> 
+                <view bindtap="selectthis" class="address_delete" data-id="{{idx}}">选择</view>
+            </view>
+            <view style="clear:both"></view>
+        </view>
+    </view>
+</view>

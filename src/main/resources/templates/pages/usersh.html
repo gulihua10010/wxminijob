@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户审核</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <div class="layui-tab layui-tab-brief">
+        <div class="layui-tab-item layui-show">
+            <div class="admin-main">
+                <div class="layui-field-box layui-form">
+
+
+                    <table class="layui-table admin-table">
+                        <thead>
+                        <tr>
+                            <th width="10%" align="center">id</th>
+                            <th width="10%" align="center">openId</th>
+                            <th width="10%" align="center">昵称</th>
+                            <th width="10%" align="center">手机号</th>
+                            <th width="10%" align="center">学校</th>
+                            <th width="10%" align="center">注册时间</th>
+                            <th width="25%" align="center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user:${users}">
+                            <td align="center" th:text="${user.id}">{$vo.id}</td>
+                            <td style="padding-left: 20px;"><a target="_blank" th:text="${user.openId}"  > </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.nickName}" >  </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.phone}">  </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.school}"> </a ></td>
+                            <td align="center" th:text="${#dates.format(user.regtime,'yyyy-MM-dd HH:mm')}"> </td>
+                            <td align="center"><a class="layui-btn layui-btn-normal layui-btn-mini" th:href="@{'/getUsershByid/'+${user.id}}"
+                                                  href="">查看详情</a>
+                                <a class="agrees layui-btn layui-btn-normal layui-btn-mini" href="javascript:;"
+                                   data-id="" th:attr="data-id=${user.id}"
+                                   >审核通过</a>
+                                <a class="noagree layui-btn layui-btn-danger layui-btn-mini" href="javascript:;"
+                                   data-id="" th:attr="data-id=${user.id},data-name=${user.nickName}"
+                                > 不通过</a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/js/common.js"></script>
+
+
+
+</div>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var form = layui.form
+            , jq = layui.jquery;
+
+        jq('.agrees').click(function () {
+            var id=jq(this).data('id');
+            var t=jq(this);
+            layer.confirm('确定要审核通过么？', {
+                btn: ['确定','取消']
+            }, function(){
+
+                ajaxform({},"api/updatesUserStatus?id="+id+"&status=4",jq,function (res) {
+                     location.reload()
+                } );
+            }, function(){
+            });
+
+
+        })
+        jq('.noagree').click(function () {
+            var id=jq(this).data('id');
+            var name=jq(this).data('name');
+            var t=jq(this);
+            var tip= '&nbsp;&nbsp;亲爱的用户'+name+',您好，你的个人信息审核不通过，原因是:<br/>'
+            layer.open({
+                type: 1,
+                title: '不通过原因',
+                skin: 'layui-layer-rim', //加上边框
+                area: ['430px', '350px'], //宽高
+                content:tip+'<textarea cols="50"  rows="15"  id="content" placeholder="请输入内容"  style="margin: 10px"></textarea>' +
+                '<button class="layui-btn layui-btn-normal send" style="float: right" >发送</button> '
+            });
+
+            jq('.send').click(function () {
+                var formdata =   JSON.stringify({
+                    'content': tip+ jq('#content').val()
+                })
+                console.log(formdata)
+                ajaxform(formdata,"/shenhenoagree/"+id,jq,function (res) {
+                    location.reload()
+                } );
+
+            })
+
+        })
+
+
+    })
+
+</script>
+</body>
+</html>

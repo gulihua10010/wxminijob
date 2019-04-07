@@ -1,0 +1,296 @@
+view  {
+    color: Grey;
+}
+.users_infor {
+    font-size: 36rpx;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    margin: 20rpx 0 0;
+    text-indent: 40rpx;
+}
+
+.head_pic {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100rpx;
+}
+
+.dingdan_list {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    height: 120rpx;
+    border-radius: 25rpx;
+    margin: 100rpx 0 0;
+    padding: 3% 2%;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.dingdan_list .head {
+    width: 150rpx;
+    height: 150rpx;
+    position: absolute;
+    top: -80rpx;
+    left: 50%;
+    margin-left: -75rpx;
+}
+
+.dingdan_list_infor {
+    position: absolute;
+    left: 0;
+    top: 90rpx;
+    width: 100%;
+    text-align: center;
+}
+
+.dingdan_infor1 {
+    overflow: hidden;
+    background: #fff;
+    width: 90%;
+    border-radius: 25rpx;
+    margin: 30rpx 0 0;
+    padding: 3% 2%;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.dingdan_infor2 {
+    overflow: hidden;
+    background: #fff;
+    width: 90%;
+    border-radius: 25rpx;
+    margin: 30rpx 0 0;
+    padding: 5% 2%;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.dingdan_infor1_tit {
+    margin-bottom: 10rpx;
+}
+
+.dingdan_infor1_cont {
+    color: #999;
+    line-height: 40rpx;
+}
+
+.tj_btn {
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 90%;
+    margin: 20rpx auto;
+    border-radius: 100rpx;
+    color: #fff;
+}
+
+.tj_btn:after,.tj_btn1:after {
+    border: 0;
+}
+
+.tj_btn1 {
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 90%;
+    margin: 30rpx auto 0;
+    border-radius: 100rpx;
+    color: #fff;
+}
+
+.dingdan_tops {
+    overflow: hidden;
+    background: #fff;
+    width: 90%;
+    border-radius: 25rpx;
+    margin: 30rpx 0 0;
+    padding: 3% 2%;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+.dingdan_tops_top {
+    position: relative;
+    overflow: hidden;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #ddd;
+}
+
+.dingdan_tops_top image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+}
+
+.dingdan_tops_infor {
+    position: absolute;
+    left: 100rpx;
+    top: -10rpx;
+}
+
+.dingdan_tops_center {
+    position: relative;
+}
+
+.dingdan_tops_center_cont1 {
+    color: #333;
+    margin: 10rpx 0;
+}
+
+.dingdan_tops_center_cont2 text {
+    display: inline-block;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-radius: 10rpx;
+    color: #f5f5f5;
+    padding: 0 20rpx;
+    margin: 10rpx 0;
+    background-color: #00cbf6
+}
+
+.dingdan_tops_center_cont3 {
+    color: #333;
+    margin: 10rpx 0;
+}
+
+.dingdan_tops_center_cont4 {
+    color: #999;
+    margin: 10rpx 0;
+}
+
+.label {
+    position: absolute;
+    right: -15rpx;
+    top: 0;
+    background: #fd4f36;
+    color: #fff;
+    border-top-left-radius: 50rpx;
+    border-bottom-left-radius: 50rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 20rpx;
+}
+
+.labels {
+    background: #fff;
+    color: #fd4f36;
+    border-radius: 30rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    padding: 0 15rpx;
+    margin-right: 10rpx;
+}
+
+.dingdan_infor1_tit2 {
+    float: left;
+    width: 90%;
+    color: #333;
+    text-align: left;
+}
+
+.user_bottom_list_arrow {
+    float: right;
+    width: 16rpx;
+    padding-right: 2%;
+}
+
+.user_bottom_list_arrow image {
+    width: 16rpx;
+    height: 26rpx;
+    margin-top: 30rpx;
+}
+
+.index_renwu_list_center_center {
+    overflow: hidden;
+}
+
+.list_pic {
+    width: 180rpx;
+    height: 180rpx;
+    float: left;
+    margin: 10rpx 17rpx;
+}
+ 
+ 
+.dingdan_infor3 {
+    overflow: hidden;
+    background: #fff;
+    width: 90%;
+    border-radius: 25rpx;
+    margin: 30rpx 0 0;
+    padding: 3% 2%;
+    box-shadow: 2px 2px 2px #ddd;
+    position: relative;
+    text-align: center; 
+}
+
+.dingdan_user_center_tit {
+    height: 50rpx;
+    line-height: 50rpx;
+    margin: 10rpx 0;
+}
+
+.dingdan_user_center_time {
+    color: #999;
+    margin-bottom: 10rpx;
+}
+ 
+ .dingdan_user_bot{   
+ }
+.user_center_list1{
+  
+}
+.user_center_list1,.user_center_list2,.user_center_list3 {
+    float: left;
+    width: 25%; 
+    text-align: center;
+    padding: 10rpx 4%;
+}
+
+.user_center_infor1,.user_center_infor2,.user_center_infor3 {
+    border-radius: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+}
+
+.user_center_infor1 {
+    background: #fd4f36;
+}
+.no_tips{
+
+  background-color: #ccc
+  ;padding: 5rpx;
+  border-radius: 10rpx
+}
+
+.user_center_infor2 {
+    background: #fc943b;
+}
+
+.user_center_infor3 {
+    background: #00cbf6;
+}
+
+.user_center text {
+    text-align: center;
+    font-size: 34rpx;
+    margin-top: 10rpx;
+    display: block;
+}
+
+.phone_btn {
+    position: absolute;
+    right: -10rpx;
+    top: 10rpx;
+    border: 0;
+    background: none;
+}
+
+.phone_btn:after {
+    border: 0;
+    background: none;
+}
+
+.phone_btn image {
+    width: 70rpx;
+    height: 70rpx;
+}
+/* pages/task_detail/task_detail.wxss */

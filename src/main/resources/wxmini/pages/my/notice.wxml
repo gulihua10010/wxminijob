@@ -1,0 +1,15 @@
+<wxs src="../../utils/util.wxs" module="util" />
+<view class="container">
+    <scroll-view bindscrolltolower="scrollDown" class="scoll-h" scrollY="true" style="height:{{screenHeight}}px">
+        <navigator class="xiaoxi_list" wx:for="{{list}}" hoverClass="xiaoxi_hover" url="/pages/my/notice_detail?id={{item.id}}"> 
+                <view class="xiaoxi_top">
+                    <view class="xiaoxi_tit ">
+            {{item.title}}
+          </view>
+                </view>
+                <view class="xiaoxi_bot">
+                    <view class="xiaoxi_time">{{util.getDatebefore(item.createTime)}}</view>
+                </view>
+       </navigator> 
+    </scroll-view>
+</view>

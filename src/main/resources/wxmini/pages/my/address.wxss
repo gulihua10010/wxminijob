@@ -1,0 +1,67 @@
+view  {
+    color: Grey;
+}
+.bottom-bar {
+    position: fixed;
+    bottom: 20rpx;
+    left: 2.5%;
+    width: 95%;
+    z-index: 1000;
+}
+
+.bottom-bar navigator {
+    background: #0088fe;
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #fff;
+    border-radius: 100rpx;
+}
+
+.address_list {
+    background: #fff;
+    width: 88%;
+    margin: 20rpx auto;
+    border-radius: 10rpx;
+    box-shadow: 0 2px 2px #ddd;
+    padding: 3%;
+}
+
+.address_top {
+    height: 50rpx;
+    line-height: 50rpx;
+    overflow: hidden;
+}
+
+.address_center {
+    color: #999;
+    margin: 10rpx 0 20rpx;
+    font-size: 28rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+}
+
+.address_bot {
+    float: right;
+}
+
+.address_delete {
+    float: right;
+    border: 1px solid #999;
+    border-radius: 10rpx;
+    padding: 8rpx 30rpx;
+    margin-right: 10rpx;
+}
+
+.address_edit {
+    float: right;
+    border: 1px solid #999;
+    border-radius: 10rpx;
+    padding: 8rpx 30rpx;
+}
+
+.addresss {
+    margin-bottom: 130rpx;
+    width: 100%;
+}

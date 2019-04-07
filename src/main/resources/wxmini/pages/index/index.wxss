@@ -1,0 +1,239 @@
+/**index.wxss**/
+view  {
+    color: Grey;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    background: #f5f5f5;
+    width: 100%;
+    padding: 10rpx 0rpx 3rpx 0rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head input,.head picker {
+    background: #fff;
+    width: 180rpx;
+    margin: 5rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+    font-size: .8rem;
+    text-align: center;
+    line-height: 70rpx;
+    color: #444;
+}
+
+.dateImg {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 25rpx 10rpx;
+}
+
+.to {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 20rpx 0rpx;
+}
+
+.to2 {
+    width: 60rpx;
+    height: 80rpx;
+    margin: 20rpx 0rpx;
+}
+.locationInput {
+    background: #fff;
+    width: 420rpx;
+    margin: 5rpx;
+    height: 70rpx;
+    border-radius: 10rpx;
+    font-size: .8rem;
+    text-align: left;
+    line-height: 70rpx;
+    color: #444;
+    overflow: hidden;
+}
+
+.index_renwu_list {
+    position: relative;
+    width: 86%;
+    margin: 0 0 0 5%;
+    background: #fff;
+    box-shadow: 0 5px 5px #ddd;
+    border-radius: 10rpx;
+    padding: 3%;
+    margin-bottom: 30rpx;
+}
+
+.index_renwu_tit {
+    position: absolute;
+    left: -20rpx;
+    top: 10rpx;
+    
+}
+
+.index_renwu_tit image {
+    width:80rpx;
+    height:80rpx;
+    border-radius: 100rpx; 
+}
+
+.index_renwu_list_top_l {
+    margin-left: 65rpx;
+    font-size: .8rem;
+}
+
+.index_renwu_list_top_l_name {
+    font-size: .8rem;
+    line-height: 50rpx;
+}
+
+.index_renwu_list_top_l_fenlei {
+    padding: 10rpx;
+    border: 10rpx;
+    color: gray;
+    display: inline-block;
+    border-radius: 10rpx;
+    margin: 10rpx 0; 
+}
+
+.index_renwu_list_top_l_time {
+    color: #333;
+}
+
+.index_renwu_list_top_r {
+    position: absolute;
+    right: 0rpx;
+    top: 15rpx;
+    border-top-left-radius: 30rpx;
+    border-bottom-left-radius: 30rpx;
+    height: 40rpx;
+    padding: 8rpx 20rpx;
+    color: #fff;
+    line-height: 30rpx;
+    background: #fd5139
+}
+.choujin_pricee{
+  font-size: .7rem;
+}
+.choujin_name {
+    background: #fff;
+    color: #fd5139;
+    border-radius: 20rpx;
+    height: 20rpx;
+    font-size: .7rem;
+    padding: 0 10rpx;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    margin: 0 auto;
+    background: #ddd;
+    margin-top: 15rpx;
+}
+
+.index_renwu_list_center {
+    overflow: hidden;
+    font-size: .8rem;
+    color: #999;
+}
+
+.index_renwu_list_center_top {  
+  display: block;
+  height:60rpx;
+    margin: 10rpx 0;
+}
+.index_renwu_list_center_right{
+  float: right;
+}
+.index_renwu_list_center_left{
+  background-color: rgba(0, 225, 255, 0.911);
+  /* background-color: rgba(0, 136, 254, 0.5); */
+  border-radius: 30px;
+  padding: 5rpx 10rpx;
+  float: left;
+}
+
+.index_renwu_list_top_l_title{
+  font-size:35rpx;
+  color: #111;
+  text-align: center;
+  display: block;
+  
+}
+.index_renwu_list_center_bot {
+    display: block;
+    overflow: hidden; 
+   height:40rpx;
+    margin: 10rpx 0;
+}
+
+.index_renwu_list_center_bot .day {
+    float: left;
+}
+
+.index_renwu_list_center_bot .pos {
+    float: right;
+}
+
+.index_renwu_list_center_center {
+    overflow: hidden;
+}
+
+.list_pic {
+    width: 180rpx;
+    height: 180rpx;
+    float: left;
+    margin: 10rpx 17rpx;
+}
+
+.img1 {
+    width: 65%;
+    height: 80rpx;
+    position: absolute;
+    left: 17.5%;
+    top: 76rpx;
+    z-index: 999999;
+}
+
+.img2 {
+    width: 65%;
+    height: 80rpx;
+    position: absolute;
+    left: 17.5%;
+    bottom: -60rpx;
+    z-index: 999999;
+}
+
+.add {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.add image {
+    width: 120rpx;
+    height: 120rpx;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户审核</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+
+    <div class="layui-tab-brief">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container"     id="layui-form"
+                      localtion-url="{:url('admin/article/index')}">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">公告名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" required lay-verify="required" placeholder="必填内容"
+                                   autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+
+
+                    <div class="layui-form-item" style="width: 300px">
+                        <label class="layui-form-label">目标用户</label>
+                        <div class="layui-input-block">
+                            <select name="infoid" id="infoid">
+                                <option value="0"> 全员系统
+                                <option value="" th:value="${user.id}" th:each="user:${users}" th:text="${user.nickName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">文章内容</label>
+                        <div class="layui-input-block">
+                            <textarea id="content" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="btable-paged">
+                        <div class="layui-main">
+                            <div class="formbtngroup">
+                                <button class="layui-btn layui-btn-small" lay-submit="" lay-filter="formadd" >发布</button>
+                                <button onclick="history.go(-1);" class="layui-btn layui-btn-primary layui-btn-small">返回
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="/static/js/common.js"></script>
+
+<script src="/static/js/jquery-1.9.1.min.js"></script>
+<script src="/static/js/jquery-form.js"></script>
+<script type="text/javascript" src="/static/plugins/tinymce/tinymce.min.js"></script>
+
+
+</div>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var form = layui.form
+            , jq = layui.jquery;
+        futext('#content');
+        form.on('submit', function(data){
+            var formdata =   JSON.stringify({
+                    'title': jq('input[name=title]').val()
+                    , 'sid': jq('#infoid').val()
+                    , 'content': tinyMCE.activeEditor.getContent()
+                })
+
+            ajaxform(formdata,"/publishart",jq,function () {
+                window.location.href="index";
+            })
+            return false;
+        });
+
+    })
+
+</script>
+</body>
+</html>

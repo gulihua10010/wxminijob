@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+    <style>
+
+        .layui-form-label{
+            width: 50px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #ccc;
+        }
+        .data-num{
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+            display: inline-block;
+            border-radius: 100px;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+<h2>后台管理中心</h2>
+    <div class="layui-tab-brief">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" id="layui-form"
+                     >
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户数:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view data-num"    th:text="${usercount}"></span>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">任务数:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view  data-num"  th:text="${taskcount}" ></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="/static/js/common.js"></script>
+<script>
+
+</script>
+</body>
+</html>

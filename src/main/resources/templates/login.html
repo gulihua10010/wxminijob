@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+    <script src="/static/js/gt.js"></script>
+<style>
+
+    .show{
+        display: block;
+    }
+    .hide{
+        display: none;;
+    }
+</style>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+    <form role="form" class="form-horizontal" id="islogin" method="post" autocomplete="off">
+        <div class="loginborder">
+            <h1>管理员登录</h1>
+            <div class="container login">
+                <div class="layui-form-item inputs">
+                    <label for="username" class=layui-form-label>管理员</label>
+                    <div class="layui-input-inline">
+                    <input id="username" class="layui-input lg-input"   autocomplete="off" type="text" placeholder="请输入管理员名字" name="username"
+                           value="">
+                    </div>
+
+                </div>
+                <div class="layui-form-item inputs">
+                    <label for="password" class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                    <input id="password" class="layui-input    lg-input"  autocomplete="new-password" type="password" placeholder="请输入密码" name="password"
+                           value="">
+                    </div>
+
+                </div>
+                <div class="layui-form-item inputs">
+                    <div id="embed-captcha" style="margin-left: 120px "></div>
+                    <p id="wait" class="show">正在加载验证码......</p>
+                    <p id="notice" class="hide">请先完成验证</p>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-normal" type="button"  id="loginbtn" >登录</button>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <script src="/static/js/common.js"></script>
+
+
+
+</div>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var form = layui.form
+            , $ = layui.jquery;
+
+        var handlerEmbed = function (captchaObj) {
+            var f=1;
+            $("#loginbtn").click(function (e) {
+                var validate = captchaObj.getValidate();
+
+                if (!validate) {
+                    $("#notice")[0].className = "show";
+                    setTimeout(function () {
+                        $("#notice")[0].className = "hide";
+                    }, 2000);
+                    e.preventDefault();
+                }else{
+                    $.ajax({
+                        url:"/VerifyLogin",
+                        type:'post',
+                        dataType:'json',
+                        data:{
+
+                            geetest_challenge: validate.geetest_challenge,
+                            geetest_validate: validate.geetest_validate,
+                            geetest_seccode: validate.geetest_seccode,
+                        },
+                        success:function (data) {
+                            console.log(data)
+
+                            if ($('#password').val()!=""&&$("#username").val()!=""){
+                                ajaxform(JSON.stringify({
+                                    pwd:$('#password').val(),
+                                    name:$("#username").val()
+                                }),"/login1",$,function (res) {
+                                    location.href="/";
+                                } );
+                            } else{
+
+                                layer.msg("请输入用户名和密码");
+                            }
+
+                        }
+                    })
+                }
+            });
+            // 将验证码加到id为captcha的元素里，同时会有三个input的值：geetest_challenge, geetest_validate, geetest_seccode
+            captchaObj.appendTo("#embed-captcha");
+            captchaObj.onReady(function () {
+                $("#wait")[0].className = "hide";
+            });
+            // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
+        };
+        var url="/GeetestStart?t="+(new Date).getTime();
+
+        $.ajax({
+            // 获取id，challenge，success（是否启用failback）
+
+            url:url, // 加随机数防止缓存
+            type: "get",
+            dataType: "json",
+            success: function (res) {
+                console.log(res.data.gt)
+                // console.log(data);
+                // 使用initGeetest接口
+                // 参数1：配置参数
+                // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                initGeetest({
+                    gt: res.data.gt,
+                    challenge: res.data.challenge,
+                    new_captcha: res.data.new_captcha,
+                    product: "float", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                    offline: !res.data.success ,// 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                    width:'300px',
+                    // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+                }, handlerEmbed);
+            },
+
+        });
+
+    })
+
+</script>
+</body>
+</html>

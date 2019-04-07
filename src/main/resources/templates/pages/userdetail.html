@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+
+    <div class="layui-tab-brief">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" id="layui-form"
+                     >
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户昵称:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.nickName}"></span>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户姓名:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.realName}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户微信id:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.openId}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.gender}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">语言:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.language}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">城市:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.city}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">省份:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.province}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">国家:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.country}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">头像:</label>
+                        <img id="uploaded-image"  width="300" th:src="@{${user.avatarUrl}}"  >
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.phone}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view"  th:if="${user.status eq -1}" th:text="禁用"></span>
+                            <span class="layui-view"  th:if="${user.status eq 1}" th:text="登录未认证"></span>
+                            <span class="layui-view"  th:if="${user.status eq 2}" th:text="已经认证"></span>
+                            <span class="layui-view"  th:if="${user.status eq 3}" th:text="审核未通过"></span>
+                            <span class="layui-view"  th:if="${user.status eq 4}" th:text="正常"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">注册时间:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${#dates.format(user.regtime,'yyyy-MM-dd HH:mm')}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                    <label class="layui-form-label">最后登录时间:</label>
+                    <div class="layui-input-inline">
+                        <span class="layui-view" th:text="${#dates.format(user.lastLoginTime,'yyyy-MM-dd HH:mm')}"></span>
+                    </div>
+                </div>
+                    <div class="layui-form-item">
+                    <label class="layui-form-label">学校:</label>
+                    <div class="layui-input-inline">
+                        <span class="layui-view" th:text="${user.school}"></span>
+                    </div>
+                </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学院:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.college}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">班级:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.className}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学号:</label>
+                        <div class="layui-input-inline">
+                            <span class="layui-view" th:text="${user.stuNo}"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">身份证正面:</label>
+                        <img width="300" th:src="@{${user.idCard1}}"  >
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">身份证反面:</label>
+                        <img    width="300" th:src="@{${user.idCard2}}"  >
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学生证:</label>
+                        <img  width="300" th:src="@{${user.stuCard}}"  >
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script>
+
+</script>
+</body>
+</html>

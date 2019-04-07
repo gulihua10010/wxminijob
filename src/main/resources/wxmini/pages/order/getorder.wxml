@@ -1,0 +1,24 @@
+<!--pages/task_detail/task_detail.wxml-->
+<wxs src="../../utils/util.wxs" module="util" />
+
+<view class="container">  
+    <view class="dingdan_infor2">
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">任务名称： {{data.task.title}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">发单人昵称： {{data.task.user.nickName}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">发单人姓名：{{data.task.user.realName}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">联系方法： {{data.task.user.phone}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">订单金额： {{data.task.payment}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">订单号{{data.orderid}}</view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">订单生成时间：{{util.formatTime(data.createTime)}} </view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;">订单更新时间：{{util.formatTime(data.updateTime)}}  </view>
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;"  wx:if="{{data.paymentType==1}}">支付方式：在线支付</view> 
+        <view class="dingdan_infor1_tit2" style="margin-bottom:20rpx;" wx:else>支付方式：面付</view> 
+    </view> 
+         <view class="dingdan_infor1">
+         <view class="dingdan_infor1_tit font36">任务隐私信息： {{data.task.privateInfo}}</view>
+         
+           </view>  
+    <view  class="weui-btn " style='text-align:center'>请认真完成</view>
+    
+</view>
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="/static/css/main.css"  media="all"  />
+
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv.min.js"></script>
+    <script src="/static/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/static/plugins/layui/layui.js"></script>
+</head>
+<body>
+
+<!--主体-->
+<div style="margin-bottom:36px;">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <div class="layui-tab layui-tab-brief">
+        <div class="layui-tab-item layui-show">
+            <div class="admin-main">
+                <div class="layui-field-box layui-form">
+
+                    <div class="layui-box-searchber">
+
+                        <form class=" layui-form-pane" action="/users" method="get">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">关键词</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="keyword" value="" placeholder="请输入关键词"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn  layui-btn-small">搜索</button>
+                            </div>
+                        </form>
+                    </div>
+                    <table class="layui-table admin-table">
+                        <thead>
+                        <tr>
+                            <th width="10%" align="center">id</th>
+                            <th width="10%" align="center">openId</th>
+                            <th width="10%" align="center">昵称</th>
+                            <th width="10%" align="center">手机号</th>
+                            <th width="10%" align="center">学校</th>
+                            <th width="10%" align="center">注册时间</th>
+                            <th width="20%" align="center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user:${users}">
+                            <td align="center" th:text="${user.id}">{$vo.id}</td>
+                            <td style="padding-left: 20px;"><a target="_blank" th:text="${user.openId}"  > </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.nickName}" >  </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.phone}">  </a></td>
+                            <td style="padding-left: 20px;"><a target="_blank"  th:text="${user.school}"> </a ></td>
+                            <td align="center" th:text="${#dates.format(user.regtime,'yyyy-MM-dd HH:mm')}"> </td>
+                            <td align="center"><a class="layui-btn layui-btn-normal layui-btn-mini" th:href="@{'/user/'+${user.id}}"
+                                                  href="">查看详情</a>
+                                <a class="elementdel layui-btn layui-btn-danger layui-btn-mini" href="javascript:;"
+                                   data-id="" th:attr="data-id=${user.id},data-status=${user.status}"   th:text="${user.status<0?'取消禁用':'禁用'}"
+                                   >禁用</a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btable-paged" style="position: relative;right: 30%">
+
+    </div>
+    <script type="text/javascript" src="/static/js/delelement.js"></script>
+    <script src="/static/js/common.js"></script>
+
+
+
+</div>
+<script>
+    layui.use(['layer', 'form', 'element'], function () {
+        var form = layui.form
+            , jq = layui.jquery;
+
+        jq('.elementdel').click(function () {
+            var id=jq(this).data('id');
+            var status=jq(this).data('status');
+            var t=jq(this);
+            if (t.text()=='禁用'){
+                layer.confirm('确定要禁用此用户么？', {
+                    btn: ['确定','取消']
+                }, function(){
+
+                    ajaxform({},"/api/updatesUserStatus?id="+id+"&status="+(status*-1),jq,function (res) {
+                        t.text("取消禁用")
+                    } );
+                }, function(){
+                });
+            }else{
+
+                layer.confirm('确定要取消禁用此用户么？', {
+                    btn: ['确定','取消']
+                }, function(){
+
+                    ajaxform({},"/api/updatesUserStatus?id="+id+"&status="+(status*-1),jq,function (res) {
+                        t.text("禁用")
+                    } );
+                }, function(){
+                });
+
+            }
+
+
+        })
+
+    })
+
+</script>
+</body>
+</html>

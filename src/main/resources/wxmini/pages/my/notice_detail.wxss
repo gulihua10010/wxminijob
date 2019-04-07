@@ -1,0 +1,28 @@
+page {
+    background: #fff;
+}
+
+.xiaoxi_detail {
+    width: 90%;
+    margin: 5% auto;
+} 
+.news_tit {
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 40rpx;
+    margin-bottom: 10rpx;
+    color: Grey;
+
+}
+
+.news_time {
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    margin-bottom: 10rpx;
+}
+
+.news_cont { 
+    line-height: 45rpx;
+    font-size: 28rpx;
+}

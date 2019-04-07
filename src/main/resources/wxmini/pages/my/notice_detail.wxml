@@ -1,0 +1,14 @@
+<import src="/wxParse/wxParse.wxml"></import>
+<view class="container">
+    <view class="xiaoxi_detail">
+        <view class="news_tit">
+        {{detail.title}}
+    </view>
+    <view class="news_time">
+       {{detail.create_time}}
+    </view>
+        <view class="news_cont">
+            <template is="wxParse" data="{{wxParseData:pageInfo.nodes}}"></template>
+        </view>
+    </view> 
+</view>
